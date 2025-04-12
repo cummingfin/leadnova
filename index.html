@@ -14,6 +14,8 @@
     html, body {
       height: 100%;
       font-family: 'Inter', sans-serif;
+    }
+    body {
       background-color: black;
       color: white;
     }
@@ -28,6 +30,21 @@
       transition: transform 0.1s ease;
       z-index: 9999;
     }
+    nav {
+      width: 100%;
+      padding: 1rem 2rem;
+      background-color: rgba(0, 0, 0, 0.9);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav h1 {
+      font-size: 1.5rem;
+      color: #00ff00;
+    }
     .fullscreen-hero {
       display: flex;
       justify-content: flex-start;
@@ -37,6 +54,7 @@
       text-align: left;
       padding: 5rem 2rem;
       position: relative;
+      background-color: black;
     }
     .hero-text {
       font-size: 4rem;
@@ -68,8 +86,8 @@
     }
     .section {
       padding: 4rem 2rem;
-      background-color: #0f172a;
-      color: white;
+      background-color: #f3f4f6;
+      color: #111;
       text-align: center;
     }
     .cta-btn {
@@ -87,10 +105,40 @@
     .cta-btn:hover {
       background-color: #00cc00;
     }
+    .steps {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .step {
+      max-width: 300px;
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: left;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    .step img {
+      width: 100%;
+      height: 180px;
+      background-color: #e5e7eb;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+    .step h3 {
+      color: #00cc66;
+      margin-bottom: 0.5rem;
+    }
   </style>
 </head>
 <body>
   <div class="cursor" id="cursor"></div>
+  <nav>
+    <h1>SparkLeads</h1>
+  </nav>
+
   <div class="fullscreen-hero">
     <div class="hero-text">Leads for</div>
     <div class="typed-text" id="typed"></div>
@@ -101,6 +149,25 @@
     <h2>What is SparkLeads?</h2>
     <p>We use AI to generate qualified leads for your business through automated outreach, smart targeting, and beautifully personalized cold messaging. Whether you're a startup, coach, or agency—SparkLeads makes your pipeline effortless.</p>
     <button class="cta-btn">Request a Demo</button>
+
+    <h2 style="margin-top: 4rem;">How It Works – Just 3 Easy Steps</h2>
+    <div class="steps">
+      <div class="step">
+        <img src="#" alt="Step 1">
+        <h3>Step 1: Tell Us Who You Want</h3>
+        <p>Describe your ideal client and target market. We’ll use that data to scrape highly relevant prospects for your business.</p>
+      </div>
+      <div class="step">
+        <img src="#" alt="Step 2">
+        <h3>Step 2: Personalized Outreach</h3>
+        <p>We generate unique, human-like cold messages for every lead using advanced AI. No generic spam here.</p>
+      </div>
+      <div class="step">
+        <img src="#" alt="Step 3">
+        <h3>Step 3: Leads in Your Inbox</h3>
+        <p>Warm, qualified leads get delivered straight to you. Just check your inbox and start booking calls.</p>
+      </div>
+    </div>
   </section>
 
   <script>
