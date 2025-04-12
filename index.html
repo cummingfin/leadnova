@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LeadNova - AI-Powered Lead Generation</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
@@ -11,14 +11,12 @@
       padding: 0;
       box-sizing: border-box;
     }
-    html {
-      scroll-behavior: smooth;
-      cursor: none;
-    }
-    body {
+    html, body {
+      height: 100%;
       font-family: 'Inter', sans-serif;
-      background-color: #0f172a;
+      background-color: black;
       color: white;
+      overflow: hidden;
     }
     .cursor {
       width: 20px;
@@ -31,125 +29,34 @@
       transition: transform 0.1s ease;
       z-index: 9999;
     }
-    header {
-      background: linear-gradient(135deg, #1e3a8a, #2563eb);
-      padding: 5rem 1rem;
+    .fullscreen-hero {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
       text-align: center;
     }
-    header h1 {
+    .hero-text {
       font-size: 3rem;
-      font-weight: 700;
-    }
-    header p {
-      font-size: 1.2rem;
-      color: #cbd5e1;
-      margin-top: 1rem;
-    }
-    nav {
-      background-color: #0f172a;
-      padding: 1rem 2rem;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-    }
-    nav h2 {
-      color: #3b82f6;
-      font-size: 1.5rem;
-    }
-    .section {
-      padding: 4rem 2rem;
-      max-width: 960px;
-      margin: auto;
-    }
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    .feature-box {
-      background: #1e293b;
-      padding: 2rem;
-      border-radius: 16px;
-      transition: transform 0.3s ease;
-      border: 1px solid #334155;
-    }
-    .feature-box:hover {
-      transform: translateY(-5px);
-      border-color: #3b82f6;
-    }
-    .feature-box h3 {
-      margin-bottom: 1rem;
-      color: #3b82f6;
-    }
-    .cta {
-      text-align: center;
-      margin-top: 4rem;
-    }
-    .cta button {
-      background-color: #3b82f6;
+      font-weight: bold;
       color: white;
-      font-size: 1.1rem;
-      padding: 1rem 2.5rem;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: background 0.3s;
     }
-    .cta button:hover {
-      background-color: #1d4ed8;
+    .typed-text {
+      font-size: 3rem;
+      font-weight: bold;
+      height: 3.5rem;
     }
-    footer {
-      text-align: center;
-      font-size: 0.9rem;
-      color: #94a3b8;
-      padding: 3rem 1rem;
+    .highlight {
+      color: #00ffff;
     }
   </style>
 </head>
 <body>
   <div class="cursor" id="cursor"></div>
-  <nav>
-    <h2>LeadNova</h2>
-  </nav>
-  <header>
-    <h1>LeadNova</h1>
-    <p>AI-Powered Outreach & Lead Generation for Modern Agencies</p>
-  </header>
-
-  <section class="section">
-    <h2 style="font-size: 2rem; text-align: center;">What We Do</h2>
-    <p style="text-align: center; max-width: 700px; margin: 1rem auto; color: #cbd5e1;">We automate your prospecting process using AI and web scraping. We find your ideal clients, personalize outreach, and deliver qualified leads directly to your inbox.</p>
-
-    <div class="features">
-      <div class="feature-box">
-        <h3>🔍 Smart Prospecting</h3>
-        <p>We identify high-converting leads tailored to your niche using data and intent signals.</p>
-      </div>
-      <div class="feature-box">
-        <h3>🤖 AI-Personalized Emails</h3>
-        <p>Each lead receives a human-like, personalized message that stands out and converts.</p>
-      </div>
-      <div class="feature-box">
-        <h3>📈 Ready-to-Close Leads</h3>
-        <p>Get leads that are already warmed up and ready for a sales call—no cold spam.</p>
-      </div>
-      <div class="feature-box">
-        <h3>⚙️ Done-For-You Setup</h3>
-        <p>We handle the scraping, messaging, and outreach so you can focus on closing deals.</p>
-      </div>
-    </div>
-
-    <div class="cta">
-      <p><strong>Want early access?</strong></p>
-      <button onclick="alert('This would normally open a form or booking calendar.')">Request a Demo</button>
-    </div>
-  </section>
-
-  <footer>
-    &copy; 2025 LeadNova. All rights reserved.
-  </footer>
+  <div class="fullscreen-hero">
+    <div class="hero-text">Leads for <span class="typed-text" id="typed"></span></div>
+  </div>
 
   <script>
     const cursor = document.getElementById('cursor');
@@ -157,6 +64,46 @@
       cursor.style.left = `${e.clientX}px`;
       cursor.style.top = `${e.clientY}px`;
     });
+
+    const typed = document.getElementById('typed');
+    const businesses = [
+      { text: 'Agencies', color: '#00ffff' },
+      { text: 'Coaches', color: '#ff00ff' },
+      { text: 'Consultants', color: '#00ff00' },
+      { text: 'Startups', color: '#ffcc00' },
+      { text: 'Freelancers', color: '#ff5555' }
+    ];
+
+    let i = 0;
+    let charIndex = 0;
+    let current = '';
+    let isDeleting = false;
+
+    function type() {
+      let business = businesses[i % businesses.length];
+      let fullText = business.text;
+
+      if (isDeleting) {
+        current = fullText.substring(0, charIndex--);
+      } else {
+        current = fullText.substring(0, charIndex++);
+      }
+
+      typed.innerHTML = `<span style="color: ${business.color}">${current}</span>`;
+
+      if (!isDeleting && charIndex === fullText.length + 1) {
+        isDeleting = true;
+        setTimeout(type, 1200);
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        i++;
+        setTimeout(type, 500);
+      } else {
+        setTimeout(type, isDeleting ? 50 : 100);
+      }
+    }
+
+    type();
   </script>
 </body>
 </html>
