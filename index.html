@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LeadNova - AI-Powered Lead Generation</title>
+  <title>SparkLeads - AI-Powered Lead Generation</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     * {
@@ -16,7 +16,6 @@
       font-family: 'Inter', sans-serif;
       background-color: black;
       color: white;
-      overflow: hidden;
     }
     .cursor {
       width: 20px;
@@ -31,32 +30,78 @@
     }
     .fullscreen-hero {
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
       height: 100vh;
       flex-direction: column;
-      text-align: center;
+      text-align: left;
+      padding: 5rem 2rem;
+      position: relative;
     }
     .hero-text {
-      font-size: 3rem;
+      font-size: 4rem;
       font-weight: bold;
+      align-self: flex-start;
       color: white;
     }
     .typed-text {
-      font-size: 3rem;
+      font-size: 4rem;
       font-weight: bold;
-      height: 3.5rem;
+      min-height: 4.5rem;
+      align-self: flex-start;
     }
-    .highlight {
-      color: #00ffff;
+    .scroll-down {
+      position: absolute;
+      bottom: 30px;
+      font-size: 2rem;
+      animation: bounce 1.5s infinite;
+      color: #00ff00;
+      cursor: pointer;
+    }
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+    .section {
+      padding: 4rem 2rem;
+      background-color: #0f172a;
+      color: white;
+      text-align: center;
+    }
+    .cta-btn {
+      background-color: #00ff00;
+      color: black;
+      padding: 1rem 2.5rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      margin-top: 2rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .cta-btn:hover {
+      background-color: #00cc00;
     }
   </style>
 </head>
 <body>
   <div class="cursor" id="cursor"></div>
   <div class="fullscreen-hero">
-    <div class="hero-text">Leads for <span class="typed-text" id="typed"></span></div>
+    <div class="hero-text">Leads for</div>
+    <div class="typed-text" id="typed"></div>
+    <div class="scroll-down" onclick="document.getElementById('content').scrollIntoView({ behavior: 'smooth' });">↓</div>
   </div>
+
+  <section class="section" id="content">
+    <h2>What is SparkLeads?</h2>
+    <p>We use AI to generate qualified leads for your business through automated outreach, smart targeting, and beautifully personalized cold messaging. Whether you're a startup, coach, or agency—SparkLeads makes your pipeline effortless.</p>
+    <button class="cta-btn">Request a Demo</button>
+  </section>
 
   <script>
     const cursor = document.getElementById('cursor');
